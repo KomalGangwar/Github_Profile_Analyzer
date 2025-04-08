@@ -1,54 +1,141 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# GitHub Profile Analyzer
 
-Currently, two official plugins are available:
+A React application that visualizes GitHub user activity including repositories and daily commit patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+-  User profile information display
+- Visualization of daily commit activity (simulated data)
+- Comprehensive repository listing with:
+
+   - Repository name and description
+   - Star count
+   - Primary language
+   - Fork status
+
+
+## Getting Started
+### Prerequisites
+- Node.js (v14.0.0 or higher)
+- npm or yarn
+- GitHub account (for deployment to Vercel)
+
+
+
+
+
+
+### Installation
+
+- Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/github-profile-analyzer.git
+cd github-profile-analyzer
+```
+- Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Create a .env file in the root directory (optional for higher GitHub API rate limits):
+```bash
+GITHUB_TOKEN=your_github_personal_access_token
 ```
+Note: The application works without a token but will have lower API rate limits.
+
+- Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+- Open http://localhost:3000 in your browser.
+## Project Structure
+
+```bash
+github-profile-analyzer/
+|── src/
+|   |──components/
+│   |    ├── ui/
+│   |    |  ├── Alert.tsx
+│   |    |  ├── Button.tsx
+│   |    |  ├── Card.tsx
+│   |    |  ├── Input.tsx
+│   |    |  └── Skeleton.tsx
+│   |    GitHubProfileAnalyzer.tsx
+|   |──types/
+│        └── github.ts
+|── public/ 
+│── App.tsx
+│── index.tsx
+├── vite.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+
+## How It Works
+
+- Enter a GitHub username in the search box and click "Search"
+- The application makes API calls to GitHub to fetch:
+
+   - User profile information
+   - Public repositories
+
+
+- The application displays:
+
+   - User profile details (avatar, name, bio, follower counts)
+   - A simulated daily commit chart for the last 30 days
+   - A list of repositories with details
+
+
+## Technologies Used
+
+**React:** UI framework
+
+**Next.js:** React framework for server-side rendering and static site generation
+
+**TypeScript:** For type safety
+
+**Recharts :** For data visualizations
+
+
+
+
+## Deployment to Vercel
+**Step 1:**  Prepare Your Repository
+
+Make sure your code is pushed to a GitHub repository.
+
+**Step 2:** Sign Up for Vercel
+- Go to Vercel and sign up with your GitHub account
+- Click "New Project" button
+- Import your GitHub repository
+
+**Step 3:** Configure Project
+- Keep the default settings or customize as needed
+- Add environment variables if you're using a GitHub token:
+
+  - Name: GITHUB_TOKEN
+  - Value: Your GitHub personal access token
+
+**Step 4:** Deploy
+- Click "Deploy"
+- Wait for the deployment to finish
+- Vercel will provide you with a URL to access your application
+
+**Link:** https://github-profile-analyzer-sjwh.vercel.app/  
+## Acknowledgements
+
+- GitHub API for providing the data
+- Recharts for the visualization components
+- Vercel for hosting
