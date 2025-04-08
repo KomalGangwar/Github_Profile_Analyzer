@@ -1,4 +1,4 @@
-import React from 'react';
+
 import GitHubProfileAnalyzer from './components/GitHubProfileAnalyzer';
 import './styles/global.css';
 import './styles/componenets.css';
